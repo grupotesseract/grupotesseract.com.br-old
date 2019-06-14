@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-menu">
     <v-toolbar fixed app dark>
       <!-- <v-avatar>
         <img
@@ -47,7 +47,7 @@ export default {
         },
         {
           title: 'Quem Somos',
-          to: '#about',
+          to: '#about-us',
         },
         {
           title: 'Projetos',
@@ -63,4 +63,9 @@ export default {
 }
 </script>
 
-<style stylus scoped></style>
+<style lang="stylus" scoped>
+.main-menu {
+  color: red;
+  font-family: jaapokki-regular;
+}
+</style>

@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style stylus scoped>
+<style lang="stylus" scoped>
 .container {
   padding: 0px;
 }

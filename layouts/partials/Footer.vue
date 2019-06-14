@@ -1,5 +1,7 @@
 <template>
-  <div class="footer"></div>
+  <div id="footer" class="footer">
+    <h1>_ Tesseract</h1>
+  </div>
 </template>
 
 <script>
@@ -14,6 +16,11 @@ export default {
 .footer {
   width: 100%;
   height: 200px;
-  background-color: $gray-1;
+  background-color: $gray-2;
+
+  h1 {
+    color: $white-1;
+    font-family: jaapokki-regular;
+  }
 }
 </style>

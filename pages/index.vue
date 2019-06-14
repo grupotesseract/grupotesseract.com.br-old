@@ -28,4 +28,4 @@ export default {
 }
 </script>
 
-<style stylus></style>
+<style lang="stylus" scoped></style>

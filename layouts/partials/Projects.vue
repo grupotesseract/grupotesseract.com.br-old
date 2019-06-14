@@ -1,5 +1,7 @@
 <template>
-  <div class="projects"></div>
+  <div id="projects" class="projects">
+    <h1>Projetos Recentes</h1>
+  </div>
 </template>
 
 <script>
@@ -15,5 +17,10 @@ export default {
   width: 100%;
   height: 400px;
   background-color: $black-1;
+
+  h1 {
+    color: $white-1;
+    font-family: jaapokki-regular;
+  }
 }
 </style>
