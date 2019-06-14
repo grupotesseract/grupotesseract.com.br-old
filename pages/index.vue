@@ -1,13 +1,21 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div></div>
+  <v-layout>
+    <v-flex>
+      <div class="lambada"></div>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 export default {
-  components: {}
+  components: {},
 }
 </script>
+
+<style stylus>
+.lambada {
+  width: 100%;
+  height: 500px;
+  background-color: black;
+}
+</style>
