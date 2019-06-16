@@ -6,26 +6,20 @@
           src=""
           alt="Grupo Tesseract Logo"
         />
-      </v-avatar> -->
+      </v-avatar>-->
       <!-- <img
         src=""
         alt="Grupo Tesseract Título"
         height="30px"
-      /> -->
-      <v-spacer></v-spacer>
+      />-->
+      <v-spacer />
       <v-btn icon @click.stop="showMenu = !showMenu">
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
     <v-navigation-drawer v-model="showMenu" right temporary fixed dark>
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-tile-content>
             <v-list-tile-title v-text="item.title"></v-list-tile-title>
           </v-list-tile-content>
@@ -43,23 +37,23 @@ export default {
       items: [
         {
           title: 'Home',
-          to: '/',
+          to: '/'
         },
         {
           title: 'Quem Somos',
-          to: '#about-us',
+          to: '#about-us'
         },
         {
           title: 'Projetos',
-          to: '#projects',
+          to: '#projects'
         },
         {
           title: 'Contato',
-          to: '#contact',
-        },
-      ],
+          to: '#contact'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 

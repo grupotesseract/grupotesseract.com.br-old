@@ -1,14 +1,16 @@
 <template>
-  <div id="welcome" class="welcome">
-    <h1>_ Tesseract</h1>
-  </div>
+  <v-layout class="welcome">
+    <v-flex>
+      <h1>_ Tesseract</h1>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
   data() {
     return {}
-  },
+  }
 }
 </script>
 
@@ -16,11 +18,9 @@ export default {
 .welcome {
   width: 100%;
   height: 400px;
-  background-color: $black-1;
 
   h1 {
     color: $white-1;
-    font-family: jaapokki-regular;
   }
 }
 </style>

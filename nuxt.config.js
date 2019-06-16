@@ -62,7 +62,7 @@ module.exports = {
     plugins: [new VuetifyLoaderPlugin()],
     loaders: {
       stylus: {
-        import: ['~assets/style/variables.styl', '~assets/style/custom-styles.styl']
+        import: ['~assets/style/variables.styl']
       }
     },
     /*
