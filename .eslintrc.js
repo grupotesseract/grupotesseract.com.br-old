@@ -9,17 +9,18 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
+    'plugin:vue/recommended',
     'plugin:nuxt/recommended',
-    // 'plugin:prettier/recommended',
-    // 'prettier',
+    'plugin:prettier/recommended',
+    'eslint:recommended',
     'prettier/vue'
-  ],
-  plugins: [
-    // 'prettier'
   ],
   // add your custom rules here
   rules: {
     'nuxt/no-cjs-in-config': 'off',
-    'no-console': 1
+    'no-console': 1,
+  },
+  globals: {
+    $nuxt: true
   }
 }

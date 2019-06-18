@@ -1,10 +1,10 @@
 <template>
   <v-container fluid>
-    <Welcome/>
-    <About/>
-    <Projects/>
-    <Contact/>
-    <Footer/>
+    <Welcome />
+    <About />
+    <Projects />
+    <Contact />
+    <Footer />
   </v-container>
 </template>
 
@@ -29,7 +29,6 @@ export default {
 <style lang="stylus" scoped>
 .container {
   padding: 0px;
-
   background-color: $black-1;
 }
 </style>

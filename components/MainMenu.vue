@@ -19,7 +19,13 @@
     </v-toolbar>
     <v-navigation-drawer v-model="showMenu" right temporary fixed dark>
       <v-list>
-        <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+        <v-list-tile
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
           <v-list-tile-content>
             <v-list-tile-title v-text="item.title"></v-list-tile-title>
           </v-list-tile-content>

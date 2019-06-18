@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
 
@@ -37,7 +39,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/vuetify'],
+  plugins: ['@/plugins/vuetify', { src: '@/plugins/vue-waypoint', ssr: false }],
 
   /*
    ** Nuxt.js modules

@@ -17,7 +17,7 @@ export default {
 <style lang="stylus" scoped>
 .welcome {
   width: 100%;
-  height: 400px;
+  height: 700px;
 
   h1 {
     color: $white-1;

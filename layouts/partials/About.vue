@@ -4,11 +4,16 @@
       <div class="title-line" :style="{ width: bottomTitle + 'px' }"></div>
     </v-flex>
     <v-flex xs12 sm12 md4 lg3 xl2>
-      <h1>QUEM</h1>
+      <h1 v-waypoint="{ active: true, callback: logOne }">QUEM</h1>
       <h2 ref="bottomTitleRef">SOMOS</h2>
     </v-flex>
     <v-flex xs12 sm12 md6 lg5 xl4>
-      <p>Grupo de prossionais da área de TI que acredita na IMPORTÂNCIA DA TRANSPARÊNCIA E DA CULTURA COLABORATIVA em seus processos. Oferecemos serviços dos mais variados tipos, como: desenvolvimento de sites, aplicativos e soluções de infraestrutura.</p>
+      <p>
+        Grupo de prossionais da área de TI que acredita na IMPORTÂNCIA DA
+        TRANSPARÊNCIA E DA CULTURA COLABORATIVA em seus processos. Oferecemos
+        serviços dos mais variados tipos, como: desenvolvimento de sites,
+        aplicativos e soluções de infraestrutura.
+      </p>
       <button style="color: white;" @click="getPos()">Button</button>
     </v-flex>
   </v-layout>
@@ -24,6 +29,11 @@ export default {
   mounted() {
     this.bottomTitle =
       this.$refs.bottomTitleRef.getBoundingClientRect().left + 248
+  },
+  methods: {
+    logOne({ el, going, direction }) {
+      el.classList.toggle('active', this.$waypointMap.GOING_IN === going)
+    }
   }
 }
 </script>
@@ -84,5 +94,9 @@ export default {
     font-weight: 100;
     line-height: 1.3;
   }
+}
+
+.active {
+  border: 2px dashed white;
 }
 </style>
