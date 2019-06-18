@@ -8,7 +8,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'Grupo Tesseract',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -62,7 +62,7 @@ module.exports = {
     plugins: [new VuetifyLoaderPlugin()],
     loaders: {
       stylus: {
-        import: ['~assets/style/variables.styl']
+        import: ['~assets/style/variables.styl', '~assets/style/custom-styles.styl']
       }
     },
     /*
