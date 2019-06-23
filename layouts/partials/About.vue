@@ -24,8 +24,8 @@
         serviços dos mais variados tipos, como: desenvolvimento de sites,
         aplicativos e soluções de infraestrutura.
       </p>
-      <p>Width: {{ window.width }}</p>
-      <p>Height: {{ window.height }}</p>
+      <p>Width: {{ windowSize.x }}</p>
+      <p>Height: {{ windowSize.y }}</p>
     </v-flex>
   </v-layout>
 </template>
@@ -34,36 +34,24 @@
 export default {
   data() {
     return {
-      bottomTitleSize: 0,
-      window: {
-        width: 0,
-        height: 0
-      }
+      bottomTitleSize: 0
     }
   },
-  created() {
-    this.handleResize()
-  },
-  destroyed() {
-    // eslint-disable-next-line nuxt/no-env-in-hooks
-    if (process.client) {
-      window.removeEventListener('resize', this.handleResize)
+  computed: {
+    windowSize() {
+      return this.$store.state.windowSize
     }
   },
   mounted() {
-    if (this.window.width <= 599) {
+    if (this.windowSize.x <= 599) {
       this.bottomTitleSize =
         this.$refs.bottomTitleRef.getBoundingClientRect().left + 264
-    } else if (this.window.width >= 600 && this.window.width <= 959) {
+    } else if (this.windowSize.x >= 600 && this.windowSize.x <= 959) {
       this.bottomTitleSize =
         this.$refs.bottomTitleRef.getBoundingClientRect().left + 280
     } else {
       this.bottomTitleSize =
         this.$refs.bottomTitleRef.getBoundingClientRect().left + 248
-    }
-    // eslint-disable-next-line nuxt/no-env-in-hooks
-    if (process.client) {
-      window.addEventListener('resize', this.handleResize)
     }
   },
   methods: {
@@ -84,12 +72,6 @@ export default {
         'bottomTitleActive',
         this.$waypointMap.GOING_IN === going
       )
-    },
-    handleResize() {
-      if (process.client) {
-        this.window.width = window.innerWidth
-        this.window.height = window.innerHeight
-      }
     }
   }
 }
