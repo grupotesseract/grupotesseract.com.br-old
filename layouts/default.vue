@@ -1,10 +1,8 @@
 <template>
   <v-app>
-    <MainMenu></MainMenu>
+    <MainMenu />
     <v-content>
-      <v-container fluid>
-        <nuxt></nuxt>
-      </v-container>
+      <nuxt />
     </v-content>
   </v-app>
 </template>
@@ -14,13 +12,9 @@ import MainMenu from '~/components/MainMenu.vue'
 
 export default {
   components: {
-    MainMenu,
-  },
+    MainMenu
+  }
 }
 </script>
 
-<style lang="stylus" scoped>
-.container {
-  padding: 0px;
-}
-</style>
+<style lang="stylus" scoped></style>

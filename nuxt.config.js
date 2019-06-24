@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
 
@@ -27,7 +29,7 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#0097aa' },
 
   /*
    ** Global CSS
@@ -37,7 +39,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/vuetify'],
+  plugins: ['@/plugins/vuetify', { src: '@/plugins/vue-waypoint', ssr: false }],
 
   /*
    ** Nuxt.js modules
@@ -62,7 +64,7 @@ module.exports = {
     plugins: [new VuetifyLoaderPlugin()],
     loaders: {
       stylus: {
-        import: ['~assets/style/variables.styl', '~assets/style/custom-styles.styl']
+        import: ['~assets/style/variables.styl']
       }
     },
     /*

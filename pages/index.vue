@@ -1,18 +1,16 @@
 <template>
-  <v-layout>
-    <v-flex>
-      <Welcome></Welcome>
-      <AboutUs></AboutUs>
-      <Projects></Projects>
-      <Contact></Contact>
-      <Footer></Footer>
-    </v-flex>
-  </v-layout>
+  <v-container fluid>
+    <Welcome />
+    <About />
+    <Projects />
+    <Contact />
+    <Footer />
+  </v-container>
 </template>
 
 <script>
 import Welcome from '~/layouts/partials/Welcome.vue'
-import AboutUs from '~/layouts/partials/AboutUs.vue'
+import About from '~/layouts/partials/About.vue'
 import Projects from '~/layouts/partials/Projects.vue'
 import Contact from '~/layouts/partials/Contact.vue'
 import Footer from '~/layouts/partials/Footer.vue'
@@ -20,12 +18,17 @@ import Footer from '~/layouts/partials/Footer.vue'
 export default {
   components: {
     Welcome,
-    AboutUs,
+    About,
     Projects,
     Contact,
-    Footer,
-  },
+    Footer
+  }
 }
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.container {
+  padding: 0px;
+  background-color: $black-1;
+}
+</style>

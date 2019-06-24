@@ -1,14 +1,16 @@
 <template>
-  <div id="projects" class="projects">
-    <h1>Projetos Recentes</h1>
-  </div>
+  <v-layout class="projects">
+    <v-flex>
+      <p>Projetos Recentes</p>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
   data() {
     return {}
-  },
+  }
 }
 </script>
 
@@ -16,11 +18,9 @@ export default {
 .projects {
   width: 100%;
   height: 400px;
-  background-color: $black-1;
 
-  h1 {
+  p {
     color: $white-1;
-    font-family: jaapokki-regular;
   }
 }
 </style>

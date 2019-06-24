@@ -1,14 +1,16 @@
 <template>
-  <div id="footer" class="footer">
-    <h1>_ Tesseract</h1>
-  </div>
+  <v-layout id="footer" class="footer">
+    <v-flex>
+      <p>_ Tesseract</p>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
   data() {
     return {}
-  },
+  }
 }
 </script>
 
@@ -18,9 +20,8 @@ export default {
   height: 200px;
   background-color: $gray-2;
 
-  h1 {
+  p {
     color: $white-1;
-    font-family: jaapokki-regular;
   }
 }
 </style>

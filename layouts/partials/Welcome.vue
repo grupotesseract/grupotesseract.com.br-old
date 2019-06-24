@@ -1,26 +1,26 @@
 <template>
-  <div id="welcome" class="welcome">
-    <h1>_ Tesseract</h1>
-  </div>
+  <v-layout class="welcome">
+    <v-flex>
+      <p>_ Tesseract</p>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
   data() {
     return {}
-  },
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
 .welcome {
   width: 100%;
-  height: 400px;
-  background-color: $black-1;
+  height: 700px;
 
-  h1 {
+  p {
     color: $white-1;
-    font-family: jaapokki-regular;
   }
 }
 </style>

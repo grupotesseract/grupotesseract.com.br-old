@@ -6,13 +6,13 @@
           src=""
           alt="Grupo Tesseract Logo"
         />
-      </v-avatar> -->
+      </v-avatar>-->
       <!-- <img
         src=""
         alt="Grupo Tesseract Título"
         height="30px"
-      /> -->
-      <v-spacer></v-spacer>
+      />-->
+      <v-spacer />
       <v-btn icon @click.stop="showMenu = !showMenu">
         <v-icon>menu</v-icon>
       </v-btn>
@@ -43,23 +43,23 @@ export default {
       items: [
         {
           title: 'Home',
-          to: '/',
+          to: '/'
         },
         {
           title: 'Quem Somos',
-          to: '#about-us',
+          to: '#about-us'
         },
         {
           title: 'Projetos',
-          to: '#projects',
+          to: '#projects'
         },
         {
           title: 'Contato',
-          to: '#contact',
-        },
-      ],
+          to: '#contact'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 

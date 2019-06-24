@@ -1,14 +1,16 @@
 <template>
-  <div id="contact" class="contact">
-    <h1>Quer criar um projeto com a gente?</h1>
-  </div>
+  <v-layout class="contact">
+    <v-flex>
+      <p>Quer criar um projeto com a gente?</p>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
   data() {
     return {}
-  },
+  }
 }
 </script>
 
@@ -18,9 +20,8 @@ export default {
   height: 400px;
   background-color: $blue-2;
 
-  h1 {
+  p {
     color: $black-1;
-    font-family: jaapokki-regular;
   }
 }
 </style>
