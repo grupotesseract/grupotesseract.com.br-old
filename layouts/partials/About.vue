@@ -2,30 +2,41 @@
   <v-layout class="about" row wrap justify-center>
     <v-flex xs12>
       <div class="topTitleLine" :style="{ width: bottomTitleSize + 'px' }">
-        <div v-waypoint="{ active: true, callback: topTitleLine }"></div>
+        <div
+          v-waypoint="{
+            active: true,
+            callback: topTitleLine,
+            options: intersectionOptions
+          }"
+          class="lineGrow"
+        ></div>
       </div>
     </v-flex>
     <v-flex xs12 sm12 md4 lg3 xl2>
-      <h1 v-waypoint="{ active: true, callback: topTitle }" class="topTitle">
+      <h1
+        v-waypoint="{
+          active: true,
+          callback: topTitle,
+          options: intersectionOptions
+        }"
+        class="topTitle"
+      >
         QUEM
       </h1>
       <h2
         ref="bottomTitleRef"
-        v-waypoint="{ active: true, callback: bottomTitle }"
+        v-waypoint="{
+          active: true,
+          callback: bottomTitle,
+          options: intersectionOptions
+        }"
         class="bottomTitle"
       >
         SOMOS
       </h2>
     </v-flex>
     <v-flex xs12 sm12 md6 lg5 xl4>
-      <p>
-        Grupo de prossionais da área de TI que acredita na IMPORTÂNCIA DA
-        TRANSPARÊNCIA E DA CULTURA COLABORATIVA em seus processos. Oferecemos
-        serviços dos mais variados tipos, como: desenvolvimento de sites,
-        aplicativos e soluções de infraestrutura.
-      </p>
-      <p>Width: {{ windowSize.x }}</p>
-      <p>Height: {{ windowSize.y }}</p>
+      <p class="text">{{ about.text }}</p>
     </v-flex>
   </v-layout>
 </template>
@@ -34,33 +45,31 @@
 export default {
   data() {
     return {
-      bottomTitleSize: 0
+      intersectionOptions: {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0
+      },
+      bottomTitleSize: 0,
+      windowSize: {
+        x: [0, 1]
+      }
     }
   },
   computed: {
-    windowSize() {
-      return this.$store.state.windowSize
+    about() {
+      return this.$store.state.about
     }
   },
   mounted() {
-    if (this.windowSize.x <= 599) {
-      this.bottomTitleSize =
-        this.$refs.bottomTitleRef.getBoundingClientRect().left + 264
-    } else if (this.windowSize.x >= 600 && this.windowSize.x <= 959) {
-      this.bottomTitleSize =
-        this.$refs.bottomTitleRef.getBoundingClientRect().left + 280
-    } else {
-      this.bottomTitleSize =
-        this.$refs.bottomTitleRef.getBoundingClientRect().left + 248
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      this.windowSize.x = window.innerWidth
     }
+    this.bottomTitleSize =
+      this.$refs.bottomTitleRef.getBoundingClientRect().left + 248
   },
   methods: {
-    topTitleLine({ el, going, direction }) {
-      el.classList.toggle(
-        'topTitleLineActive',
-        this.$waypointMap.GOING_IN === going
-      )
-    },
     topTitle({ el, going, direction }) {
       el.classList.toggle(
         'topTitleActive',
@@ -72,6 +81,12 @@ export default {
         'bottomTitleActive',
         this.$waypointMap.GOING_IN === going
       )
+    },
+    topTitleLine({ el, going, direction }) {
+      el.classList.toggle(
+        'topTitleLineActive',
+        this.$waypointMap.GOING_IN === going
+      )
     }
   }
 }
@@ -81,58 +96,63 @@ export default {
 .about {
   padding-bottom: 8rem;
 
+  @media (max-width: 959px) {
+    padding-bottom: 4rem;
+  }
+
   .topTitleLine {
     height: 3px;
-    margin-bottom: 2rem;
 
-    div {
-      width: 0%;
+    .lineGrow {
       height: 3px;
+      width: 100%;
       background-color: $blue-1;
+      transition: transform 2.5s ease;
+      transform-origin: left;
+      transform-style: preserve-3D;
+      transform: scale(0);
     }
   }
 
   .topTitle {
-    opacity: 0;
-  }
-
-  .bottomTitle {
-    opacity: 0;
-  }
-
-  h1, h2, p {
-    @media screen and (max-width: 599px) {
-      padding: 0 1rem;
-    }
-
-    @media (max-width: 959px) and (min-width: 600px) {
-      padding: 0 2rem;
-    }
-  }
-
-  h1, h2 {
-    line-height: 1;
-    font-weight: 100;
-  }
-
-  h1 {
-    font-size: 6rem;
-    margin-left: 3rem;
+    margin-top: 2rem;
+    padding-right: 2rem;
     color: $black-1;
+    text-align: right;
     -webkit-text-fill-color: $black-1;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: $white-1;
+    opacity: 0;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    @media (max-width: 959px) {
+      text-align: left;
+      padding-right: 0rem;
+      padding-left: 3rem;
+    }
   }
 
-  h2 {
-    color: $white-1;
+  .bottomTitle {
+    padding-right: 5rem;
     margin-top: 0rem;
-    font-size: 5rem;
+    color: $white-1;
+    text-align: right;
+    opacity: 0;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    @media (max-width: 959px) {
+      text-align: left;
+      padding-right: 0;
+    }
   }
 
-  p {
+  .text {
+    margin-top: 6rem;
     color: $white-1;
-    margin-top: 4rem;
 
     @media (max-width: 959px) {
       margin-top: 2rem;
@@ -141,30 +161,15 @@ export default {
     @media (max-width: 959px) and (min-width: 600px) {
       padding-right: 6rem;
     }
-
-    font-size: 1.3rem;
-    font-weight: 100;
-    line-height: 1.3;
   }
 }
 
 .topTitleLineActive {
-  animation-name: growLine;
-  animation-duration: 2.5s;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-
-  @keyframes growLine {
-    from { width: 0%; }
-    to { width: 100%; }
-  }
+  transform: scale(1) !important;
 }
 
 .topTitleActive {
   animation-name: slideRight;
-  animation-duration: 2.5s;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
 
   @keyframes slideRight {
     from {
@@ -180,9 +185,6 @@ export default {
 
 .bottomTitleActive {
   animation-name: slideLeft;
-  animation-duration: 2.5s;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
 
   @keyframes slideLeft {
     from {

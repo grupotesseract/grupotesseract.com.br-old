@@ -1,7 +1,7 @@
 <template>
   <v-layout class="welcome">
     <v-flex>
-      <h1>_ Tesseract</h1>
+      <p>_ Tesseract</p>
     </v-flex>
   </v-layout>
 </template>
@@ -19,7 +19,7 @@ export default {
   width: 100%;
   height: 700px;
 
-  h1 {
+  p {
     color: $white-1;
   }
 }

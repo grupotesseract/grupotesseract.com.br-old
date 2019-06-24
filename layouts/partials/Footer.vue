@@ -1,7 +1,7 @@
 <template>
   <v-layout id="footer" class="footer">
     <v-flex>
-      <h1>_ Tesseract</h1>
+      <p>_ Tesseract</p>
     </v-flex>
   </v-layout>
 </template>
@@ -20,7 +20,7 @@ export default {
   height: 200px;
   background-color: $gray-2;
 
-  h1 {
+  p {
     color: $white-1;
   }
 }

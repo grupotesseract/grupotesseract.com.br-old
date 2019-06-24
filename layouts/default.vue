@@ -1,5 +1,5 @@
 <template>
-  <v-app v-resize="onResize">
+  <v-app>
     <MainMenu />
     <v-content>
       <nuxt />
@@ -13,14 +13,6 @@ import MainMenu from '~/components/MainMenu.vue'
 export default {
   components: {
     MainMenu
-  },
-  mounted() {
-    this.onResize()
-  },
-  methods: {
-    onResize() {
-      this.$store.commit('onResize')
-    }
   }
 }
 </script>

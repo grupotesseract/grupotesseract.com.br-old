@@ -1,7 +1,7 @@
 <template>
   <v-layout class="projects">
     <v-flex>
-      <h1>Projetos Recentes</h1>
+      <p>Projetos Recentes</p>
     </v-flex>
   </v-layout>
 </template>
@@ -19,7 +19,7 @@ export default {
   width: 100%;
   height: 400px;
 
-  h1 {
+  p {
     color: $white-1;
   }
 }
