@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="projects">
+  <v-layout id="projects">
     <v-flex>
       <p>Projetos Recentes</p>
     </v-flex>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.projects {
+#projects {
   width: 100%;
   height: 400px;
 

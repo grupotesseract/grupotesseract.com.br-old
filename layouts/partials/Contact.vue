@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="contact">
+  <v-layout id="contact">
     <v-flex>
       <p>Quer criar um projeto com a gente?</p>
     </v-flex>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.contact {
+#contact {
   width: 100%;
   height: 400px;
   background-color: $blue-2;

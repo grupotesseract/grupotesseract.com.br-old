@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <MainMenu />
-    <v-content>
+    <v-content class="pa-0">
       <nuxt />
     </v-content>
   </v-app>

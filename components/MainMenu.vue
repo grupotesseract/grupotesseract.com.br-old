@@ -1,6 +1,6 @@
 <template>
   <div class="main-menu">
-    <v-toolbar fixed app dark>
+    <v-toolbar fixed app dark color="transparent">
       <!-- <v-avatar>
         <img
           src=""
@@ -22,6 +22,7 @@
         <v-list-tile
           v-for="(item, i) in items"
           :key="i"
+          v-scroll-to="item.to"
           :to="item.to"
           router
           exact
@@ -43,7 +44,7 @@ export default {
       items: [
         {
           title: 'Home',
-          to: '/'
+          to: '#welcome'
         },
         {
           title: 'Quem Somos',
@@ -64,8 +65,19 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.v-toolbar {
+  background-color : red
+}
 .main-menu {
   color: red;
   font-family: jaapokki-regular;
+}
+
+a.v-list__tile {
+  color: magenta;
+}
+
+a.v-list__tile--active {
+  color: green;
 }
 </style>

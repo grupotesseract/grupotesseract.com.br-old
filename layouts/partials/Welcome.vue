@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="welcome">
+  <v-layout id="welcome">
     <v-flex>
       <p>_ Tesseract</p>
     </v-flex>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.welcome {
+#welcome {
   width: 100%;
   height: 700px;
 

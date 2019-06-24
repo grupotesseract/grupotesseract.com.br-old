@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="about" row wrap justify-center>
+  <v-layout id="about-us" class="about" row wrap justify-center>
     <v-flex xs12>
       <div class="topTitleLine" :style="{ width: bottomTitleSize + 'px' }">
         <div
