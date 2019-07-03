@@ -1,17 +1,8 @@
+/* eslint-disable */
+
 <template>
   <div>
     <v-toolbar fixed app dark flat color="transparent">
-      <!-- <v-avatar>
-        <img
-          src=""
-          alt="Grupo Tesseract Logo"
-        />
-      </v-avatar>-->
-      <!-- <img
-        src=""
-        alt="Grupo Tesseract Título"
-        height="30px"
-      />-->
       <v-spacer />
       <v-btn icon @click.stop="showMenu = !showMenu">
         <v-icon>menu</v-icon>
@@ -77,6 +68,14 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+
+.tesseract90graus {
+  position: fixed;
+  color: magenta;
+  font-size: 72px;
+  color: white;
+}
+
 .v-toolbar {
   background-color : red
 }
