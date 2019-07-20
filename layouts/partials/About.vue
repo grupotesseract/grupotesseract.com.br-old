@@ -106,7 +106,7 @@ export default {
     .lineGrow {
       height: 3px;
       width: 100%;
-      background-color: $blue-1;
+      background-color: $blue-2;
       transition: transform 2.5s ease;
       transform-origin: left;
       transform-style: preserve-3D;
