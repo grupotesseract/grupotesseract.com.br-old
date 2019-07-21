@@ -1,44 +1,43 @@
 <template>
-  <v-layout class="about" row wrap justify-center>
-    <v-flex xs12>
-      <div class="topTitleLine" :style="{ width: bottomTitleSize + 'px' }">
-        <div
+  <div class="about">
+    <div
+      v-waypoint="{
+        active: true,
+        callback: topTitleLine,
+        options: intersectionOptions
+      }"
+      :style="{ width: bottomTitleSize + 'px' }"
+      class="topTitleLine"
+    ></div>
+    <v-layout row wrap justify-center>
+      <v-flex xs12 sm12 md4 lg3 xl2>
+        <h1
           v-waypoint="{
             active: true,
-            callback: topTitleLine,
+            callback: topTitle,
             options: intersectionOptions
           }"
-          class="lineGrow"
-        ></div>
-      </div>
-    </v-flex>
-    <v-flex xs12 sm12 md4 lg3 xl2>
-      <h1
-        v-waypoint="{
-          active: true,
-          callback: topTitle,
-          options: intersectionOptions
-        }"
-        class="topTitle"
-      >
-        QUEM
-      </h1>
-      <h2
-        ref="bottomTitleRef"
-        v-waypoint="{
-          active: true,
-          callback: bottomTitle,
-          options: intersectionOptions
-        }"
-        class="bottomTitle"
-      >
-        SOMOS
-      </h2>
-    </v-flex>
-    <v-flex xs12 sm12 md6 lg5 xl4>
-      <p class="text">{{ about.text }}</p>
-    </v-flex>
-  </v-layout>
+          class="topTitle"
+        >
+          QUEM
+        </h1>
+        <h2
+          ref="bottomTitleRef"
+          v-waypoint="{
+            active: true,
+            callback: bottomTitle,
+            options: intersectionOptions
+          }"
+          class="bottomTitle"
+        >
+          SOMOS
+        </h2>
+      </v-flex>
+      <v-flex xs12 sm12 md6 lg5 xl4>
+        <p class="text">{{ about.text }}</p>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
@@ -102,16 +101,12 @@ export default {
 
   .topTitleLine {
     height: 3px;
-
-    .lineGrow {
-      height: 3px;
-      width: 100%;
-      background-color: $blue-2;
-      transition: transform 2.5s ease;
-      transform-origin: left;
-      transform-style: preserve-3D;
-      transform: scale(0);
-    }
+    background-color: $blue-2;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    transform-origin: left;
+    transform: scaleX(0.01);
   }
 
   .topTitle {
@@ -165,7 +160,16 @@ export default {
 }
 
 .topTitleLineActive {
-  transform: scale(1) !important;
+  animation-name: growRight;
+
+  @keyframes growRight {
+    from {
+      transform: scaleX(0.01);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 .topTitleActive {
