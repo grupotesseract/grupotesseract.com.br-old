@@ -66,7 +66,9 @@ export default {
       this.windowSize.x = window.innerWidth
     }
     this.bottomTitleSize =
-      this.$refs.bottomTitleRef.getBoundingClientRect().left + 248
+      this.windowSize.x -
+      this.$refs.bottomTitleRef.getBoundingClientRect().right +
+      170
   },
   methods: {
     topTitle({ el, going, direction }) {
@@ -100,7 +102,6 @@ export default {
   }
 
   .topTitle {
-    margin-top: 2rem;
     color: $black-1;
     text-align: right;
     -webkit-text-fill-color: $black-1;
@@ -118,6 +119,7 @@ export default {
 
   .bottomTitle {
     margin-top: 0rem;
+    margin-bottom: 1.5rem;
     color: $white-1;
     text-align: right;
     opacity: 0;
