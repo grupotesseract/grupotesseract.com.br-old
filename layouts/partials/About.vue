@@ -48,11 +48,11 @@ export default {
       intersectionOptions: {
         root: null,
         rootMargin: '0px 0px 0px 0px',
-        threshold: 0
+        threshold: [0, 1]
       },
       bottomTitleSize: 0,
       windowSize: {
-        x: [0, 1]
+        x: 0
       }
     }
   },
