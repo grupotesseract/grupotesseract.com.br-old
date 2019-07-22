@@ -118,22 +118,31 @@ export default {
       this.windowSize.x = window.innerWidth
     }
 
+    if (this.windowSize.x <= 599) {
+      this.firstImageAddress =
+        'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_380/v1563800174/grupo-tesseract/coletivoboitata720x600.jpg'
+    } else if (this.windowSize.x <= 959) {
+      this.firstImageAddress =
+        'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_480/v1563798388/grupo-tesseract/coletivoboitata900x600.jpg'
+    } else if (this.windowSize.x <= 1263) {
+      this.firstImageAddress =
+        'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_480/v1563800669/grupo-tesseract/coletivoboitata840x600.jpg'
+    } else if (this.windowSize.x <= 1903) {
+      this.firstImageAddress =
+        'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_580/v1563801258/grupo-tesseract/coletivoboitata1107x750.jpg'
+    } else if (this.windowSize.x >= 1904) {
+      this.firstImageAddress =
+        'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_700/v1563800669/grupo-tesseract/coletivoboitata1606x900.jpg'
+    }
+
     this.bottomTitleSize =
       this.windowSize.x -
       this.$refs.bottomTitleRef.getBoundingClientRect().right +
       170
 
-    this.firstImageAddress =
-      'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_' +
-      (this.$refs.firstImageRef.clientHeight + 30) +
-      '/v1563781703/grupo-tesseract/coletivoboitata720x600.jpg'
-
     this.firstImageHeight = this.$refs.firstImageRef.clientHeight
 
     this.is_data_fetched = true
-
-    console.log(this.firstImageAddress)
-    console.log(this.firstImageHeight)
   },
   methods: {
     topTitle({ el, going, direction }) {
