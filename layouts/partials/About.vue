@@ -147,7 +147,6 @@ export default {
 
   .text {
     margin-top: 6rem;
-    color: $white-1;
 
     @media (max-width: 959px) {
       margin-top: 2rem;
