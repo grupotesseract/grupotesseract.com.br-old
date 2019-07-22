@@ -38,10 +38,10 @@
       ></div>
     </v-layout>
     <v-layout row wrap class="project">
-      <v-flex xs12 md7>
+      <v-flex ref="firstImageRef" xs12 md7>
         <v-parallax
+          src="https://res.cloudinary.com/tesseract/image/upload/c_scale,h_450/v1563781703/grupo-tesseract/coletivoboitata720x600.jpg"
           class="imageProject"
-          src="https://res.cloudinary.com/tesseract/image/upload/v1563688600/grupo-tesseract/coletivoboitata.jpg"
         ></v-parallax>
       </v-flex>
       <v-flex xs12 md5 class="projectInfo">
@@ -100,7 +100,8 @@ export default {
         threshold: [0, 1]
       },
       bottomTitleSize: 0,
-      imageProjectSize: 600
+      firstImageAddress: null,
+      is_data_fetched: false
     }
   },
   computed: {
@@ -113,10 +114,20 @@ export default {
     if (process.client) {
       this.windowSize.x = window.innerWidth
     }
+
     this.bottomTitleSize =
       this.windowSize.x -
       this.$refs.bottomTitleRef.getBoundingClientRect().right +
       170
+
+    this.firstImageAddress =
+      'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_' +
+      this.$refs.firstImageRef.clientHeight +
+      '/v1563781703/grupo-tesseract/coletivoboitata720x600.jpg'
+
+    this.is_data_fetched = true
+
+    console.log(this.firstImageAddress)
   },
   methods: {
     topTitle({ el, going, direction }) {
