@@ -39,9 +39,11 @@
     </v-layout>
     <v-layout row wrap class="project">
       <v-flex ref="firstImageRef" xs12 md7>
+        <div v-if="!is_data_fetched" class="imageProject"></div>
         <v-parallax
-          src="https://res.cloudinary.com/tesseract/image/upload/c_scale,h_450/v1563781703/grupo-tesseract/coletivoboitata720x600.jpg"
-          class="imageProject"
+          v-if="is_data_fetched"
+          :height="firstImageHeight"
+          :src="firstImageAddress"
         ></v-parallax>
       </v-flex>
       <v-flex xs12 md5 class="projectInfo">
@@ -101,6 +103,7 @@ export default {
       },
       bottomTitleSize: 0,
       firstImageAddress: null,
+      firstImageHeight: null,
       is_data_fetched: false
     }
   },
@@ -122,12 +125,15 @@ export default {
 
     this.firstImageAddress =
       'https://res.cloudinary.com/tesseract/image/upload/c_scale,h_' +
-      this.$refs.firstImageRef.clientHeight +
+      (this.$refs.firstImageRef.clientHeight + 30) +
       '/v1563781703/grupo-tesseract/coletivoboitata720x600.jpg'
+
+    this.firstImageHeight = this.$refs.firstImageRef.clientHeight
 
     this.is_data_fetched = true
 
     console.log(this.firstImageAddress)
+    console.log(this.firstImageHeight)
   },
   methods: {
     topTitle({ el, going, direction }) {
@@ -221,18 +227,18 @@ export default {
     }
 
     .imageProject {
-      height: 300px !important;
+      height: 300px;
 
       @media (min-width: 600px) and (max-width: 1263px) {
-        height: 400px !important;
+        height: 400px;
       }
 
       @media (min-width: 1264px) and (max-width: 1903px) {
-        height: 500px !important;
+        height: 500px;
       }
 
       @media (min-width: 1904px) {
-        height: 600px !important;
+        height: 600px;
       }
     }
 
