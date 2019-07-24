@@ -23,7 +23,12 @@ module.exports = {
         href:
           'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
       }
-    ]
+    ],
+
+    //including jivoChat script in all pages
+    script: [
+      { src: '//code.jivosite.com/widget.js', async: true, 'jv-id':'dgbdpcS1d8' }
+    ],
   },
 
   /*
