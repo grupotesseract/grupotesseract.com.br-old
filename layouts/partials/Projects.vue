@@ -46,6 +46,7 @@
         <div v-if="!is_data_fetched" class="imageProject"></div>
         <v-parallax
           v-if="is_data_fetched"
+          alt="Site do Coletivo Boitatá"
           :height="firstImage.y"
           :src="firstImageAddress"
         ></v-parallax>
