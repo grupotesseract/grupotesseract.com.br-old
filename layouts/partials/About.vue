@@ -11,27 +11,31 @@
     ></div>
     <v-layout row wrap justify-center>
       <v-flex xs12 sm12 md4 lg3 xl2>
-        <h1
-          v-waypoint="{
-            active: true,
-            callback: topTitle,
-            options: intersectionOptions
-          }"
-          class="topTitle"
-        >
-          QUEM
-        </h1>
-        <h2
-          ref="bottomTitleRef"
-          v-waypoint="{
-            active: true,
-            callback: bottomTitle,
-            options: intersectionOptions
-          }"
-          class="bottomTitle"
-        >
-          SOMOS
-        </h2>
+        <div class="titles">
+          <h1
+            v-waypoint="{
+              active: true,
+              callback: topTitle,
+              options: intersectionOptions
+            }"
+            class="topTitle"
+          >
+            QUEM
+          </h1>
+        </div>
+        <div class="titles">
+          <h2
+            ref="bottomTitleRef"
+            v-waypoint="{
+              active: true,
+              callback: bottomTitle,
+              options: intersectionOptions
+            }"
+            class="bottomTitle"
+          >
+            SOMOS
+          </h2>
+        </div>
       </v-flex>
       <v-flex xs12 sm12 md6 lg5 xl4>
         <p class="text">{{ about.text }}</p>
@@ -65,8 +69,7 @@ export default {
     if (process.client) {
       this.windowSize.x = window.innerWidth
     }
-    this.bottomTitleSize =
-      this.$refs.bottomTitleRef.getBoundingClientRect().left + 248
+    this.bottomTitleSize = this.$refs.bottomTitleRef.getBoundingClientRect().right
   },
   methods: {
     topTitle({ el, going, direction }) {
@@ -109,39 +112,60 @@ export default {
     transform: scaleX(0.01);
   }
 
-  .topTitle {
-    margin-top: 2rem;
-    padding-right: 2rem;
-    color: $black-1;
-    text-align: right;
-    -webkit-text-fill-color: $black-1;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: $white-1;
-    opacity: 0;
-    animation-duration: 2.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+  .titles {
+    position: relative;
+    height: 5rem;
 
-    @media (max-width: 959px) {
-      text-align: left;
-      padding-right: 0rem;
-      padding-left: 3rem;
+    @media (min-width: 600px) {
+      height: 6rem;
     }
-  }
 
-  .bottomTitle {
-    padding-right: 5rem;
-    margin-top: 0rem;
-    color: $white-1;
-    text-align: right;
-    opacity: 0;
-    animation-duration: 2.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+    .topTitle {
+      position: absolute;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      right: 2rem;
+      color: $black-1;
+      text-align: right;
+      -webkit-text-fill-color: $black-1;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: $white-1;
+      opacity: 0;
+      animation-duration: 2.5s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
 
-    @media (max-width: 959px) {
-      text-align: left;
-      padding-right: 0;
+      @media (max-width: 599px) {
+        font-size: 5rem;
+      }
+
+      @media (max-width: 959px) {
+        right: auto;
+        left: 3rem;
+        text-align: left;
+      }
+    }
+
+    .bottomTitle {
+      position: absolute;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      right: 5rem;
+      color: $white-1;
+      text-align: right;
+      opacity: 0;
+      animation-duration: 2.5s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+
+      @media (max-width: 599px) {
+        font-size: 4rem;
+      }
+
+      @media (max-width: 959px) {
+        right: auto;
+        text-align: left;
+      }
     }
   }
 

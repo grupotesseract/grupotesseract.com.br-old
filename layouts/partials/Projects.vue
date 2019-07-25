@@ -2,27 +2,31 @@
   <div class="projects">
     <v-layout row wrap justify-end>
       <v-flex xs12 md10 xl9>
-        <h1
-          v-waypoint="{
-            active: true,
-            callback: topTitle,
-            options: intersectionOptions
-          }"
-          class="topTitle"
-        >
-          PROJETOS
-        </h1>
-        <h2
-          ref="bottomTitleRef"
-          v-waypoint="{
-            active: true,
-            callback: bottomTitle,
-            options: intersectionOptions
-          }"
-          class="bottomTitle"
-        >
-          RECENTES
-        </h2>
+        <div class="titles">
+          <h1
+            v-waypoint="{
+              active: true,
+              callback: topTitle,
+              options: intersectionOptions
+            }"
+            class="topTitle"
+          >
+            PROJETOS
+          </h1>
+        </div>
+        <div class="titles">
+          <h2
+            ref="bottomTitleRef"
+            v-waypoint="{
+              active: true,
+              callback: bottomTitle,
+              options: intersectionOptions
+            }"
+            class="bottomTitle"
+          >
+            RECENTES
+          </h2>
+        </div>
       </v-flex>
       <v-flex md2 xl3></v-flex>
     </v-layout>
@@ -132,9 +136,12 @@ export default {
       '/v1563949586/grupo-tesseract/coletivoboitata.png'
 
     this.bottomTitleSize =
+      // this.windowSize.x - this.$refs.bottomTitleRef.getBoundingClientRect().left
+      (this.$refs.bottomTitleRef.getBoundingClientRect().right -
+        this.$refs.bottomTitleRef.getBoundingClientRect().left) /
+        2 +
       this.windowSize.x -
-      this.$refs.bottomTitleRef.getBoundingClientRect().right +
-      170
+      this.$refs.bottomTitleRef.getBoundingClientRect().right
 
     this.is_data_fetched = true
   },
@@ -175,39 +182,55 @@ export default {
     padding-bottom: 4rem;
   }
 
-  .topTitle {
-    color: $black-1;
-    text-align: right;
-    -webkit-text-fill-color: $black-1;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: $white-1;
-    opacity: 0;
-    animation-duration: 2.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+  .titles {
+    position: relative;
+    height: 6rem;
 
     @media (max-width: 599px) {
-      font-size: 4rem;
+      height: 4rem;
     }
-  }
 
-  .bottomTitle {
-    margin-top: 0rem;
-    margin-bottom: 1.5rem;
-    color: $white-1;
-    text-align: right;
-    opacity: 0;
-    animation-duration: 2.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+    .topTitle {
+      position: absolute;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      right: 1rem;
+      color: $black-1;
+      text-align: right;
+      -webkit-text-fill-color: $black-1;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: $white-1;
+      opacity: 0;
+      animation-duration: 2.5s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
 
-    @media (max-width: 599px) {
-      font-size: 3rem;
+      @media (max-width: 599px) {
+        font-size: 4rem;
+      }
+    }
+
+    .bottomTitle {
+      position: absolute;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      right: 1rem;
+      color: $white-1;
+      text-align: right;
+      opacity: 0;
+      animation-duration: 2.5s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+
+      @media (max-width: 599px) {
+        font-size: 3rem;
+      }
     }
   }
 
   .bottomTitleLine {
     height: 3px;
+    margin-top: 0.5rem;
     background-color: $blue-2;
     animation-duration: 2.5s;
     animation-timing-function: ease;
