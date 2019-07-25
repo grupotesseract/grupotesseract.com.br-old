@@ -53,26 +53,30 @@
       <v-flex xs12 md5 class="projectInfo">
         <v-layout align-start justify-space-between column fill-height>
           <div>
-            <h3
-              v-waypoint="{
-                active: true,
-                callback: titleProject,
-                options: intersectionOptions
-              }"
-              class="topTitleProject"
-            >
-              COLETIVO
-            </h3>
-            <h3
-              v-waypoint="{
-                active: true,
-                callback: titleProject,
-                options: intersectionOptions
-              }"
-              class="bottomTitleProject"
-            >
-              BOITATÁ
-            </h3>
+            <div class="titles">
+              <h3
+                v-waypoint="{
+                  active: true,
+                  callback: titleProject,
+                  options: intersectionOptions
+                }"
+                class="topTitleProject"
+              >
+                COLETIVO
+              </h3>
+            </div>
+            <div class="titles">
+              <h3
+                v-waypoint="{
+                  active: true,
+                  callback: titleProject,
+                  options: intersectionOptions
+                }"
+                class="bottomTitleProject"
+              >
+                BOITATÁ
+              </h3>
+            </div>
           </div>
 
           <div class="technology">
@@ -252,6 +256,47 @@ export default {
       }
     }
 
+    .titles {
+      position: relative;
+      height: 4rem;
+
+      @media (max-width: 959px) {
+        height: 5rem;
+      }
+
+      .topTitleProject {
+        position: absolute;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: $white-1;
+        opacity: 0;
+        animation-duration: 2s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+
+        @media (max-width: 959px) {
+          margin-top: 2rem;
+        }
+
+        @media (min-width: 960px) {
+          margin-top: 1rem;
+        }
+      }
+
+      .bottomTitleProject {
+        position: absolute;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-bottom: 0rem;
+        color: $white-1;
+        opacity: 0;
+        animation-duration: 2s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+        animation-delay: 0.3s;
+      }
+    }
+
     .imageProject {
       height: 300px;
 
@@ -266,32 +311,6 @@ export default {
       @media (min-width: 1904px) {
         height: 600px;
       }
-    }
-
-    .topTitleProject {
-      color: $white-1;
-      opacity: 0;
-      animation-duration: 2s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
-
-      @media (max-width: 959px) {
-        margin-top: 2rem;
-      }
-
-      @media (min-width: 960px) {
-        margin-top: 1rem;
-      }
-    }
-
-    .bottomTitleProject {
-      margin-bottom: 0rem;
-      color: $white-1;
-      opacity: 0;
-      animation-duration: 2s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
-      animation-delay: 0.3s;
     }
 
     .technology {
