@@ -2,7 +2,7 @@
   <v-container fluid>
     <Welcome />
     <About />
-    <Projects />
+    <ProjectGallery />
     <Contact />
     <Footer />
   </v-container>
@@ -11,7 +11,7 @@
 <script>
 import Welcome from '~/layouts/partials/Welcome.vue'
 import About from '~/layouts/partials/About.vue'
-import Projects from '~/layouts/partials/Projects.vue'
+import ProjectGallery from '~/layouts/partials/ProjectGallery.vue'
 import Contact from '~/layouts/partials/Contact.vue'
 import Footer from '~/layouts/partials/Footer.vue'
 
@@ -19,7 +19,7 @@ export default {
   components: {
     Welcome,
     About,
-    Projects,
+    ProjectGallery,
     Contact,
     Footer
   }
