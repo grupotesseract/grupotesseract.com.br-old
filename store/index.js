@@ -15,7 +15,7 @@ export const state = () => ({
       {
         templateType: 1,
         imageUrl: '/v1563949586/grupo-tesseract/coletivoboitata.png',
-        imageAlt: 'Site do Coletivo Boitatá',
+        imageAlt: 'Site Coletivo Boitatá',
         topTitle: 'COLETIVO',
         bottomTitle: 'BOITATÁ',
         technologys: [
@@ -30,7 +30,7 @@ export const state = () => ({
       {
         templateType: 2,
         imageUrl: '/v1564376973/grupo-tesseract/chicabrasil.png',
-        imageAlt: 'Site da Chica Brasil',
+        imageAlt: 'Site Chica Brasil',
         topTitle: 'CHICA',
         bottomTitle: 'BRASIL',
         technologys: [
@@ -59,7 +59,7 @@ export const state = () => ({
       {
         templateType: 2,
         imageUrl: '/v1564377519/grupo-tesseract/vestylle.png',
-        imageAlt: 'Site da Vestylle Megastore',
+        imageAlt: 'App Vestylle Megastore',
         topTitle: 'VESTYLLE',
         bottomTitle: 'MEGASTORE',
         technologys: [

@@ -20,7 +20,7 @@
             }"
             class="topTitle"
           >
-            <p class="text">{{ about.topTitle }}</p>
+            {{ about.topTitle }}
           </h1>
         </div>
         <div class="titles">
@@ -33,7 +33,7 @@
             }"
             class="bottomTitle"
           >
-            <p class="text">{{ about.bottomTitle }}</p>
+            {{ about.bottomTitle }}
           </h2>
         </div>
       </v-flex>

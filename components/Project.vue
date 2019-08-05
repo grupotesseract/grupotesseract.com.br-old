@@ -71,7 +71,7 @@
         </div>
 
         <p>
-          <a :href="project.url" target="_blank">
+          <a :href="project.url" :title="project.imageAlt" target="_blank">
             {{ project.urlInfo }}
           </a>
         </p>
