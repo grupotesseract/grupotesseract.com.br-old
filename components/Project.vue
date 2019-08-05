@@ -1,7 +1,7 @@
 <template>
-  <v-layout row wrap class="project">
-    <v-flex ref="image" xs12 md7>
-      <div v-if="!is_data_fetched" class="image"></div>
+  <v-layout wrap :class="templateClass.project" class="project">
+    <v-flex ref="image" xs12 :class="templateClass.image" class="image">
+      <div v-if="!is_data_fetched" class="imagePlaceHolder"></div>
       <v-parallax
         v-if="is_data_fetched"
         :alt="project.imageAlt"
@@ -9,29 +9,52 @@
         :src="imageUrl"
       ></v-parallax>
     </v-flex>
-    <v-flex xs12 md5 class="projectInfo">
-      <v-layout align-start justify-space-between column fill-height>
-        <div style="width: 100%;">
-          <div class="title">
+    <v-flex xs12 :class="templateClass.information" class="information">
+      <v-layout
+        :class="templateClass.informationLayout"
+        class="informationLayout justify-space-between column fill-height"
+      >
+        <div class="informationText" :class="templateClass.informationText">
+          <div>
             <h3
+              v-if="templateClass.informationTitleMove"
               v-waypoint="{
                 active: true,
-                callback: title,
+                callback: titleLeft,
                 options: intersectionOptions
               }"
-              class="topTitle"
+            >
+              {{ project.topTitle }}
+            </h3>
+            <h3
+              v-if="!templateClass.informationTitleMove"
+              v-waypoint="{
+                active: true,
+                callback: titleRight,
+                options: intersectionOptions
+              }"
             >
               {{ project.topTitle }}
             </h3>
           </div>
-          <div class="title">
+          <div>
             <h3
+              v-if="templateClass.informationTitleMove"
               v-waypoint="{
                 active: true,
-                callback: title,
+                callback: titleLeft,
                 options: intersectionOptions
               }"
-              class="bottomTitle"
+            >
+              {{ project.bottomTitle }}
+            </h3>
+            <h3
+              v-if="!templateClass.informationTitleMove"
+              v-waypoint="{
+                active: true,
+                callback: titleRight,
+                options: intersectionOptions
+              }"
             >
               {{ project.bottomTitle }}
             </h3>
@@ -48,7 +71,7 @@
         </div>
 
         <p>
-          <a :href="project.urlInfo" target="_blank">
+          <a :href="project.url" target="_blank">
             {{ project.urlInfo }}
           </a>
         </p>
@@ -86,6 +109,34 @@ export default {
   computed: {
     project() {
       return this.$store.state.projectGallery.projects[this.index]
+    },
+    templateClass() {
+      switch (this.project.templateType) {
+        case 1:
+          return {
+            project: ['templateClass' + this.project.templateType],
+            image: ['md7'],
+            information: ['md5'],
+            informationLayout: ['align-start'],
+            informationTitleMove: true
+          }
+        case 2:
+          return {
+            project: ['templateClass' + this.project.templateType],
+            image: ['md6', 'order-md2'],
+            information: ['md6'],
+            informationLayout: ['align-end'],
+            informationTitleMove: false
+          }
+        default:
+          return {
+            project: ['templateClass1'],
+            image: ['md7'],
+            information: ['md5'],
+            informationLayout: ['align-start'],
+            informationTitleMove: true
+          }
+      }
     }
   },
   mounted() {
@@ -107,8 +158,17 @@ export default {
     this.is_data_fetched = true
   },
   methods: {
-    title({ el, going, direction }) {
-      el.classList.toggle('titleActive', this.$waypointMap.GOING_IN === going)
+    titleLeft({ el, going, direction }) {
+      el.classList.toggle(
+        'titleLeftActive',
+        this.$waypointMap.GOING_IN === going
+      )
+    },
+    titleRight({ el, going, direction }) {
+      el.classList.toggle(
+        'titleRightActive',
+        this.$waypointMap.GOING_IN === going
+      )
     }
   }
 }
@@ -119,15 +179,10 @@ export default {
   position: absolute;
   margin: 1rem 0rem;
   color: $white-1;
-  left: 2rem;
   opacity: 0;
   animation-duration: 2s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-
-  @media (min-width: 960px) {
-    left: 0rem;
-  }
 }
 
 .project {
@@ -137,53 +192,41 @@ export default {
     margin-top: 6rem;
   }
 
-  .projectInfo {
-    @media (min-width: 960px) {
-      padding-left: 2rem;
-    }
-  }
+  .information {
+    .informationText {
+      width: 100%;
 
-  .title {
-    position: relative;
-    height: 4rem;
-    width: 100%;
+      div {
+        position: relative;
+        height: 4rem;
+        width: 100%;
 
-    @media (max-width: 959px) {
-      height: 5rem;
-    }
+        @media (max-width: 959px) {
+          height: 5rem;
+        }
 
-    .topTitle {
-      @extends .projectTitle;
+        h3 {
+          @extends .projectTitle;
+        }
 
-      @media (max-width: 959px) {
-        margin-top: 2rem;
+        &:first-child {
+          h3 {
+            @media (max-width: 959px) {
+              margin-top: 2rem;
+            }
+
+            @media (min-width: 960px) {
+              margin-top: 1rem;
+            }
+          }
+        }
+
+        &:last-child {
+          h3 {
+            animation-delay: 0.3s;
+          }
+        }
       }
-
-      @media (min-width: 960px) {
-        margin-top: 1rem;
-      }
-    }
-
-    .bottomTitle {
-      @extends .projectTitle;
-
-      animation-delay: 0.3s;
-    }
-  }
-
-  .image {
-    height: 300px;
-
-    @media (min-width: 600px) and (max-width: 1263px) {
-      height: 400px;
-    }
-
-    @media (min-width: 1264px) and (max-width: 1903px) {
-      height: 500px;
-    }
-
-    @media (min-width: 1904px) {
-      height: 600px;
     }
   }
 
@@ -201,12 +244,107 @@ export default {
   }
 }
 
-.titleActive {
+.templateClass1 {
+  .image {
+    .imagePlaceHolder {
+      height: 300px;
+
+      @media (min-width: 600px) and (max-width: 1263px) {
+        height: 400px;
+      }
+
+      @media (min-width: 1264px) and (max-width: 1903px) {
+        height: 500px;
+      }
+
+      @media (min-width: 1904px) {
+        height: 600px;
+      }
+    }
+  }
+
+  .information {
+    @media (min-width: 960px) {
+      padding-left: 2rem;
+    }
+
+    .informationText {
+      div {
+        h3 {
+          @extends .projectTitle;
+
+          left: 2rem;
+
+          @media (min-width: 960px) {
+            left: 0rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.templateClass2 {
+  .image {
+    .imagePlaceHolder {
+      height: 400px;
+
+      @media (min-width: 600px) and (max-width: 1263px) {
+        height: 500px;
+      }
+
+      @media (min-width: 1264px) and (max-width: 1903px) {
+        height: 600px;
+      }
+
+      @media (min-width: 1904px) {
+        height: 700px;
+      }
+    }
+  }
+
+  .information {
+    @media (min-width: 960px) {
+      padding-right: 2rem;
+    }
+
+    .informationText {
+      div {
+        h3 {
+          @extends .projectTitle;
+
+          right: 2rem;
+
+          @media (min-width: 960px) {
+            right: 0rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.titleLeftActive {
   animation-name: slideLeft;
 
   @keyframes slideLeft {
     from {
       transform: translate(80px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(none);
+      opacity: 1;
+    }
+  }
+}
+
+.titleRightActive {
+  animation-name: slideRight;
+
+  @keyframes slideRight {
+    from {
+      transform: translate(-80px);
       opacity: 0;
     }
     to {
