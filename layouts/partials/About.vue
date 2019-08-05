@@ -20,7 +20,7 @@
             }"
             class="topTitle"
           >
-            QUEM
+            <p class="text">{{ about.topTitle }}</p>
           </h1>
         </div>
         <div class="titles">
@@ -33,7 +33,7 @@
             }"
             class="bottomTitle"
           >
-            SOMOS
+            <p class="text">{{ about.bottomTitle }}</p>
           </h2>
         </div>
       </v-flex>
