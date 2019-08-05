@@ -14,7 +14,7 @@
         :class="templateClass.informationLayout"
         class="informationLayout justify-space-between column fill-height"
       >
-        <div class="informationText" :class="templateClass.informationText">
+        <div class="informationTitle" :class="templateClass.informationTitle">
           <div>
             <h3
               v-if="templateClass.informationTitleMove"
@@ -192,8 +192,30 @@ export default {
     margin-top: 6rem;
   }
 
+  .image {
+    .imagePlaceHolder {
+      height: 300px;
+
+      @media (min-width: 600px) and (max-width: 959px) {
+        height: 400px;
+      }
+
+      @media (min-width: 960px) and (max-width: 1263px) {
+        height: 400px;
+      }
+
+      @media (min-width: 1264px) and (max-width: 1903px) {
+        height: 500px;
+      }
+
+      @media (min-width: 1904px) {
+        height: 600px;
+      }
+    }
+  }
+
   .information {
-    .informationText {
+    .informationTitle {
       width: 100%;
 
       div {
@@ -245,11 +267,59 @@ export default {
 }
 
 .templateClass1 {
+  .information {
+    @media (min-width: 960px) {
+      padding-left: 2rem;
+    }
+
+    .informationTitle {
+      div {
+        h3 {
+          @extends .projectTitle;
+
+          left: 2rem;
+
+          @media (min-width: 960px) {
+            left: 0rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.templateClass2 {
+  .information {
+    @media (min-width: 960px) {
+      padding-right: 2rem;
+    }
+
+    .informationTitle {
+      div {
+        h3 {
+          @extends .projectTitle;
+
+          right: 2rem;
+
+          @media (min-width: 960px) {
+            right: 0rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.templateClass3 {
   .image {
     .imagePlaceHolder {
       height: 300px;
 
-      @media (min-width: 600px) and (max-width: 1263px) {
+      @media (min-width: 600px) and (max-width: 959px) {
+        height: 400px;
+      }
+
+      @media (min-width: 960px) and (max-width: 1263px) {
         height: 400px;
       }
 
@@ -268,7 +338,7 @@ export default {
       padding-left: 2rem;
     }
 
-    .informationText {
+    .informationTitle {
       div {
         h3 {
           @extends .projectTitle;
@@ -277,46 +347,6 @@ export default {
 
           @media (min-width: 960px) {
             left: 0rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-.templateClass2 {
-  .image {
-    .imagePlaceHolder {
-      height: 400px;
-
-      @media (min-width: 600px) and (max-width: 1263px) {
-        height: 500px;
-      }
-
-      @media (min-width: 1264px) and (max-width: 1903px) {
-        height: 600px;
-      }
-
-      @media (min-width: 1904px) {
-        height: 700px;
-      }
-    }
-  }
-
-  .information {
-    @media (min-width: 960px) {
-      padding-right: 2rem;
-    }
-
-    .informationText {
-      div {
-        h3 {
-          @extends .projectTitle;
-
-          right: 2rem;
-
-          @media (min-width: 960px) {
-            right: 0rem;
           }
         }
       }

@@ -40,7 +40,7 @@ export const state = () => ({
         urlInfo: 'Ver projeto ➜'
       },
       {
-        templateType: 3,
+        templateType: 1,
         imageUrl: '/v1564377277/grupo-tesseract/3dfinancialacademy.png',
         imageAlt: 'App 3D Financial Academy',
         topTitle: '3D FINANCIAL',
@@ -55,7 +55,7 @@ export const state = () => ({
         urlInfo: 'Ver projeto ➜'
       },
       {
-        templateType: 1,
+        templateType: 2,
         imageUrl: '/v1564377519/grupo-tesseract/vestylle.png',
         imageAlt: 'Site da Vestylle Megastore',
         topTitle: 'VESTYLLE',
