@@ -26,7 +26,7 @@
         </a>
         <a
           class="mailto_link"
-          target="_blank"
+          target="blank"
           href="mailto:contato@grupotesseract.com.br"
         >
           <span>contato@grupotesseract.com.br</span>
