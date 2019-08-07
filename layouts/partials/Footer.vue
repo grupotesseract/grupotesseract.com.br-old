@@ -54,7 +54,7 @@ export default {
 .footer {
   padding: 1rem;
   text-align: center;
-  height: 330px;
+  height: 280px;
 
   @media (min-width: 960px) {
     text-align:left;
