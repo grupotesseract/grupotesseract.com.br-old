@@ -14,12 +14,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.10.1",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@nuxtjs/axios": "5.5.4",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/vuetify": "0.5.5",
     "cross-env": "5.2.0",
     "express": "4.17.1",
     "nuxt": "2.8.1",
+    "nuxt-fontawesome": "^0.4.0",
     "vee-validate": "^2.2.13",
     "vue-waypoint": "3.2.2",
     "vuetify-loader": "1.2.2"

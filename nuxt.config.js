@@ -10,11 +10,12 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: 'Grupo Tesseract',
+    title: 'Grupo Tesseract - Sites, Sistemas e Aplicativos! 📱 💻 🌐',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'keywords', name: 'keywords', content: 'tesseract, desenvolvimento web, laravel, vue, react, empresa desenvolvimento, sites, sistemas, aplicativos' },
+      { hid: 'description', name: 'description', content: 'Empresa Especializada em Desenvolvimento para Web. Nós amamos Tecnologia. Trabalhamos com Laravel, React, Vue, Angular. Equipes Personalizadas para seu Projeto' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -44,7 +45,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/vuetify', { src: '@/plugins/vue-waypoint', ssr: false }],
+  plugins: [
+    '@/plugins/vuetify',
+    { src: '@/plugins/vue-waypoint', ssr: false },
+    { src: '~plugins/ga.js', ssr: false }
+  ],
 
   /*
    ** Nuxt.js modules
@@ -52,7 +57,17 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['nuxt-fontawesome', {
+      component: 'fa',
+      imports: [
+        //import whole set
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['fas']
+        }
+      ]
+    }]
   ],
   /*
    ** Axios module configuration
