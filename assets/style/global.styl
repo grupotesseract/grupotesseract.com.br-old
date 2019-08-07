@@ -1,16 +1,13 @@
-h1, h2, p {
-  @media screen and (max-width: 599px) {
-    margin: 0 1rem;
-  }
-
-  @media (max-width: 959px) and (min-width: 600px) {
+h1, h2, h3, p {
+  @media (max-width: 959px) {
     margin: 0 2rem;
   }
 }
 
-h1, h2 {
+h1, h2, h3 {
   line-height: 1;
   font-weight: 100;
+  color: $white-1;
 }
 
 h1 {
@@ -21,8 +18,22 @@ h2 {
   font-size: 5rem;
 }
 
+h3 {
+  font-size: 3.5rem;
+
+  @media (max-width: 1263px) {
+    font-size: 3rem;
+  }
+}
+
 p {
   font-size: 1.3rem;
   font-weight: 100;
   line-height: 1.3;
+  color: $white-1;
+
+  a {
+    color: $blue-2;
+    text-decoration: none;
+  }
 }

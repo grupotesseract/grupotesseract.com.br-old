@@ -1,17 +1,8 @@
 <template>
-  <div class="about">
-    <div
-      v-waypoint="{
-        active: true,
-        callback: topTitleLine,
-        options: intersectionOptions
-      }"
-      :style="{ width: bottomTitleSize + 'px' }"
-      class="topTitleLine"
-    ></div>
-    <v-layout row wrap justify-center>
-      <v-flex xs12 sm12 md4 lg3 xl2>
-        <div class="titles">
+  <div class="projectGallery">
+    <v-layout row wrap justify-end>
+      <v-flex xs12 md10 xl9>
+        <div class="title">
           <h1
             v-waypoint="{
               active: true,
@@ -20,12 +11,13 @@
             }"
             class="topTitle"
           >
-            {{ about.topTitle }}
+            {{ projectGallery.header.topTitle }}
           </h1>
         </div>
-        <div class="titles">
+
+        <div class="title">
           <h2
-            ref="bottomTitleRef"
+            ref="bottomTitle"
             v-waypoint="{
               active: true,
               callback: bottomTitle,
@@ -33,35 +25,57 @@
             }"
             class="bottomTitle"
           >
-            {{ about.bottomTitle }}
+            {{ projectGallery.header.bottomTitle }}
           </h2>
         </div>
       </v-flex>
-      <v-flex xs12 sm12 md6 lg5 xl4>
-        <p class="text">{{ about.text }}</p>
-      </v-flex>
+
+      <v-flex md2 xl3></v-flex>
     </v-layout>
+
+    <v-layout justify-end>
+      <div
+        v-waypoint="{
+          active: true,
+          callback: bottomTitleLine,
+          options: intersectionOptions
+        }"
+        class="bottomTitleLine"
+        :style="{ width: bottomTitleSize + 'px' }"
+      ></div>
+    </v-layout>
+
+    <Project
+      v-for="(project, index) in projectGallery.projects.length"
+      :key="index"
+      :index="index"
+    />
   </div>
 </template>
 
 <script>
+import Project from '~/components/Project.vue'
+
 export default {
+  components: {
+    Project
+  },
   data() {
     return {
+      windowSize: {
+        x: 0
+      },
       intersectionOptions: {
         root: null,
         rootMargin: '0px 0px 0px 0px',
         threshold: [0, 1]
       },
-      bottomTitleSize: 0,
-      windowSize: {
-        x: 0
-      }
+      bottomTitleSize: 0
     }
   },
   computed: {
-    about() {
-      return this.$store.state.about
+    projectGallery() {
+      return this.$store.state.projectGallery
     }
   },
   mounted() {
@@ -69,7 +83,13 @@ export default {
     if (process.client) {
       this.windowSize.x = window.innerWidth
     }
-    this.bottomTitleSize = this.$refs.bottomTitleRef.getBoundingClientRect().right
+
+    this.bottomTitleSize =
+      (this.$refs.bottomTitle.getBoundingClientRect().right -
+        this.$refs.bottomTitle.getBoundingClientRect().left) /
+        2 +
+      this.windowSize.x -
+      this.$refs.bottomTitle.getBoundingClientRect().right
   },
   methods: {
     topTitle({ el, going, direction }) {
@@ -84,9 +104,9 @@ export default {
         this.$waypointMap.GOING_IN === going
       )
     },
-    topTitleLine({ el, going, direction }) {
+    bottomTitleLine({ el, going, direction }) {
       el.classList.toggle(
-        'topTitleLineActive',
+        'bottomTitleLineActive',
         this.$waypointMap.GOING_IN === going
       )
     }
@@ -95,36 +115,26 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.about {
+.projectGallery {
   padding-bottom: 8rem;
 
   @media (max-width: 959px) {
     padding-bottom: 4rem;
   }
 
-  .topTitleLine {
-    height: 3px;
-    background-color: $blue-2;
-    animation-duration: 2.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-    transform-origin: left;
-    transform: scaleX(0.01);
-  }
-
-  .titles {
+  .title {
     position: relative;
-    height: 5rem;
+    height: 6rem;
 
-    @media (min-width: 600px) {
-      height: 6rem;
+    @media (max-width: 599px) {
+      height: 4rem;
     }
 
     .topTitle {
       position: absolute;
       margin-top: 1rem;
       margin-bottom: 1rem;
-      right: 2rem;
+      right: 1rem;
       color: $black-1;
       text-align: right;
       -webkit-text-fill-color: $black-1;
@@ -136,13 +146,7 @@ export default {
       animation-fill-mode: forwards;
 
       @media (max-width: 599px) {
-        font-size: 5rem;
-      }
-
-      @media (max-width: 959px) {
-        right: auto;
-        left: 3rem;
-        text-align: left;
+        font-size: 4rem;
       }
     }
 
@@ -150,7 +154,7 @@ export default {
       position: absolute;
       margin-top: 1rem;
       margin-bottom: 1rem;
-      right: 5rem;
+      right: 1rem;
       color: $white-1;
       text-align: right;
       opacity: 0;
@@ -159,33 +163,27 @@ export default {
       animation-fill-mode: forwards;
 
       @media (max-width: 599px) {
-        font-size: 4rem;
-      }
-
-      @media (max-width: 959px) {
-        right: auto;
-        text-align: left;
+        font-size: 3rem;
       }
     }
   }
 
-  .text {
-    margin-top: 6rem;
-
-    @media (max-width: 959px) {
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 959px) and (min-width: 600px) {
-      padding-right: 6rem;
-    }
+  .bottomTitleLine {
+    height: 3px;
+    margin-top: 0.5rem;
+    background-color: $blue-2;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    transform-origin: right;
+    transform: scaleX(0.01);
   }
 }
 
-.topTitleLineActive {
-  animation-name: growRight;
+.bottomTitleLineActive {
+  animation-name: growLeft;
 
-  @keyframes growRight {
+  @keyframes growLeft {
     from {
       transform: scaleX(0.01);
     }
