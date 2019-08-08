@@ -57,6 +57,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // '@nuxtjs/proxy',
     '@nuxtjs/pwa',
     ['nuxt-fontawesome', {
       component: 'fa',
@@ -75,6 +76,12 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
+  // proxy: {
+  //   '/api/': {
+  //     target: 'https://develop-api.grupotesseract.com.br',
+  //     pathRewrite: {'^/api/': ''}
+  //   }
+  // },
 
   /*
    ** Build configuration

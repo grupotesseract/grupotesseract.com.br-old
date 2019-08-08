@@ -56,6 +56,17 @@
             ></v-textarea>
             <v-btn class="mt-3" @click="submit">ENVIAR</v-btn>
           </v-form>
+          <v-snackbar
+            v-model="snackbar"
+            color="success"
+            left
+            :timeout="timeout"
+          >
+            Mensagem enviada com sucesso!
+            <v-btn dark color="success" @click="snackbar = false">
+              Fechar
+            </v-btn>
+          </v-snackbar>
           <!-- <a class="mt-3" @click="submit">
             <h4>ENVIAR</h4>
           </a> -->
@@ -81,30 +92,29 @@ export default {
       email: '',
       subject: '',
       message: '',
-      events: ''
+      events: '',
+      snackbar: false,
+      timeout: 5000
     }
-  },
-  mounted() {
-    this.$validator.localize('en', this.dictionary)
   },
   methods: {
     submit() {
       this.$validator.validateAll().then(valid => {
         if (valid) {
           this.$axios
-            .$post('/test', {
+            .$post('https://api.grupotesseract.com.br/api/contacts', {
               name: this.name,
               email: this.email,
-              description: this.description
+              subject: this.subject,
+              message: this.message
             })
             .then(response => {
-              console.log('successful')
+              // console.log('successful')
+              this.snackbar = true
             })
-            .catch(error => {
-              if (error.response.status == 422) {
-                this.validationErrors = error.response.data.errors
-              }
-            })
+          // .catch(error => {
+          //   console.log(error)
+          // })
         }
       })
     }
