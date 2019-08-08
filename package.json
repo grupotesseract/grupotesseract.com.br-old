@@ -25,6 +25,7 @@
     "nuxt": "2.8.1",
     "nuxt-fontawesome": "^0.4.0",
     "vee-validate": "^2.2.13",
+    "vue-lottie": "^0.2.1",
     "vue-waypoint": "3.2.2",
     "vuetify-loader": "1.2.2"
   },

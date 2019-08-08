@@ -1,23 +1,31 @@
 <template>
   <v-layout class="welcome">
-    <v-flex>
-      <!-- <div v-if="!is_data_fetched"></div> -->
-      <video
-        ref="media"
-        width="100%"
-        src="https://res.cloudinary.com/tesseract/video/upload/v1565186745/SiteTesseract/Video_Tesseract_HOME.mp4"
-      ></video>
-    </v-flex>
+    <!-- <v-flex> -->
+    <lottie :options="defaultOptions" @animCreated="handleAnimation" />
+    <!-- </v-flex> -->
   </v-layout>
 </template>
 
 <script>
+import Lottie from '~/components/Lottie.vue'
+import animationData from '~/assets/animacao.json'
+
 export default {
-  data() {
-    return {}
+  components: {
+    lottie: Lottie
   },
-  mounted() {
-    this.$refs.media.play()
+  data() {
+    return {
+      defaultOptions: {
+        animationData: animationData,
+        loop: false
+      }
+    }
+  },
+  methods: {
+    handleAnimation: function(anim) {
+      this.anim = anim
+    }
   }
 }
 </script>
@@ -25,9 +33,22 @@ export default {
 <style lang="stylus" scoped>
 .welcome {
   width: 100%;
+  min-height: 350px;
 
-  p {
-    color: $white-1;
+  @media (min-width: 600px) and (max-width: 959px) {
+    min-height: 550px;
+  }
+
+  @media (min-width: 960px) and (max-width: 1263px) {
+    min-height: 720px;
+  }
+
+  @media (min-width: 1264px) and (max-width: 1903px) {
+    min-height: 1100px;
+  }
+
+  @media (min-width: 1904px) {
+    min-height: 1250px;
   }
 }
 </style>

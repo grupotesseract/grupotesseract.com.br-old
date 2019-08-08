@@ -15,7 +15,10 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'keywords', name: 'keywords', content: 'tesseract, desenvolvimento web, laravel, vue, react, empresa desenvolvimento, sites, sistemas, aplicativos' },
-      { hid: 'description', name: 'description', content: 'Empresa Especializada em Desenvolvimento para Web. Nós amamos Tecnologia. Trabalhamos com Laravel, React, Vue, Angular. Equipes Personalizadas para seu Projeto' }
+      { hid: 'description', name: 'description', content: 'Empresa Especializada em Desenvolvimento para Web. Nós amamos Tecnologia. Trabalhamos com Laravel, React, Vue, Angular. Equipes Personalizadas para seu Projeto' },
+      { name: 'og:description', content: 'Empresa Especializada em Desenvolvimento para Web. Nós amamos Tecnologia. Trabalhamos com Laravel, React, Vue, Angular. Equipes Personalizadas para seu Projeto' },
+      { name: 'og:title', content: 'Grupo Tesseract - Sites, Sistemas e Aplicativos! 📱 💻 🌐' },
+      { name: 'og:image', content: '/ogimage.jpeg' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
