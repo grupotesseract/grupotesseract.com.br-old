@@ -1,9 +1,10 @@
 <template>
   <v-layout class="welcome">
     <v-flex>
+      <!-- <div v-if="!is_data_fetched"></div> -->
       <video
+        ref="media"
         width="100%"
-        autoplay
         src="https://res.cloudinary.com/tesseract/video/upload/v1565186745/SiteTesseract/Video_Tesseract_HOME.mp4"
       ></video>
     </v-flex>
@@ -14,6 +15,9 @@
 export default {
   data() {
     return {}
+  },
+  mounted() {
+    this.$refs.media.play()
   }
 }
 </script>

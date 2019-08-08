@@ -11,7 +11,7 @@
       <v-flex xs12 md6 class="forms">
         <v-layout justify-center column fill-height>
           <h4>ENTRE EM CONTATO</h4>
-          <v-form lazy-validation>
+          <v-form>
             <v-text-field
               v-model="name"
               v-validate="'required'"
@@ -24,7 +24,7 @@
             ></v-text-field>
             <v-text-field
               v-model="email"
-              v-validate="'required|email'"
+              v-validate.disable="'required|email'"
               :error-messages="errors.collect('email')"
               label="EMAIL"
               data-vv-name="email"
@@ -54,10 +54,11 @@
               color="#ffffff"
               dark
             ></v-textarea>
+            <v-btn class="mt-3" @click="submit">ENVIAR</v-btn>
           </v-form>
-          <a class="mt-3" @click="submit">
+          <!-- <a class="mt-3" @click="submit">
             <h4>ENVIAR</h4>
-          </a>
+          </a> -->
         </v-layout>
       </v-flex>
     </v-layout>
@@ -79,12 +80,33 @@ export default {
       name: '',
       email: '',
       subject: '',
-      message: ''
+      message: '',
+      events: ''
     }
+  },
+  mounted() {
+    this.$validator.localize('en', this.dictionary)
   },
   methods: {
     submit() {
-      this.$validator.validateAll()
+      this.$validator.validateAll().then(valid => {
+        if (valid) {
+          this.$axios
+            .$post('/test', {
+              name: this.name,
+              email: this.email,
+              description: this.description
+            })
+            .then(response => {
+              console.log('successful')
+            })
+            .catch(error => {
+              if (error.response.status == 422) {
+                this.validationErrors = error.response.data.errors
+              }
+            })
+        }
+      })
     }
   }
 }
