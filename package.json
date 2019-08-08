@@ -23,6 +23,7 @@
     "express": "4.17.1",
     "nuxt": "2.8.1",
     "nuxt-fontawesome": "^0.4.0",
+    "vue-lottie": "^0.2.1",
     "vue-waypoint": "3.2.2",
     "vuetify-loader": "1.2.2"
   },

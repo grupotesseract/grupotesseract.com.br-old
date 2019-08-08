@@ -1,29 +1,41 @@
 <template>
   <v-layout class="welcome">
     <v-flex>
-      <video
-        width="100%"
-        autoplay
-        src="https://res.cloudinary.com/tesseract/video/upload/v1565186745/SiteTesseract/Video_Tesseract_HOME.mp4"
-      ></video>
+      <lottie :options="defaultOptions" @animCreated="handleAnimation" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import Lottie from '~/components/Lottie.vue'
+import animationData from '~/assets/animacao.json'
+
 export default {
+  components: {
+    lottie: Lottie
+  },
   data() {
-    return {}
+    return {
+      defaultOptions: {
+        animationData: animationData,
+        loop: false
+      }
+    }
+  },
+  methods: {
+    handleAnimation: function(anim) {
+      this.anim = anim
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
 .welcome {
-  width: 100%;
+  min-height: 90vh;
 
-  p {
-    color: $white-1;
+  @media (max-width: 960px) {
+    min-height: 40vh;
   }
 }
 </style>
