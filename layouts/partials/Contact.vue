@@ -54,7 +54,7 @@
               color="#ffffff"
               dark
             ></v-textarea>
-            <v-btn class="mt-3" @click="submit">ENVIAR</v-btn>
+            <v-btn class="mt-3 mx-0 mb-0" @click="submit">ENVIAR</v-btn>
           </v-form>
           <v-snackbar
             v-model="snackbar"
@@ -135,6 +135,10 @@ export default {
       height: 500px;
     }
 
+    @media (max-width: 959px) {
+      margin-top: 3rem;
+    }
+
     h2, h3 {
       @media (min-width: 960px) {
         margin-right: 3rem;
@@ -143,12 +147,28 @@ export default {
 
     h3 {
       color: $black-1;
+
+      @media (max-width: 959px) {
+        font-size: 2rem;
+      }
+
+      @media (min-width: 960px) and (max-width: 1263px){
+        font-size: 3rem;
+      }
     }
 
     h2 {
       -webkit-text-fill-color: $blue-2;
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: $black-1;
+
+      @media (max-width: 959px) {
+        font-size: 3rem;
+      }
+
+      @media (min-width: 960px) and (max-width: 1263px){
+        font-size: 4rem;
+      }
     }
   }
 
