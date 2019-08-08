@@ -54,7 +54,7 @@ export default {
 .footer {
   padding: 1rem;
   text-align: center;
-  height: 280px;
+  height: 300px;
 
   @media (min-width: 960px) {
     text-align:left;
@@ -67,8 +67,8 @@ export default {
 
   h3 {
     font-size: 2.7rem;
-    @media (max-width: 960px) {
-      margin-bottom:2rem;
+    @media (max-width: 959px) {
+      margin: 2rem 0rem;
     }
     span {
       letter-spacing:-7px;
@@ -82,17 +82,16 @@ export default {
 
   .social-nav {
     padding: 1rem;
-    @media (max-width: 960px) {
+    @media (max-width: 959px) {
       padding: 0rem;
     }
 
     .mailto_link {
       width: 100%;
 
-      @media (max-width: 960px) {
-        margin-top:3rem;
+      @media (max-width: 959px) {
+        margin: 3rem 0rem;
         display:block;
-
       }
     }
 
@@ -109,8 +108,8 @@ export default {
       span {
         font-size:1.5rem;
 
-        @media (max-width: 960px) {
-          font-size:1.2rem;
+        @media (max-width: 959px) {
+          font-size:1.4rem;
         }
       }
     }
