@@ -1,8 +1,6 @@
 <template>
   <v-layout class="welcome">
-    <!-- <v-flex> -->
     <lottie :options="defaultOptions" @animCreated="handleAnimation" />
-    <!-- </v-flex> -->
   </v-layout>
 </template>
 
@@ -36,15 +34,15 @@ export default {
   min-height: 350px;
 
   @media (min-width: 600px) and (max-width: 959px) {
-    min-height: 550px;
+    min-height: 50vh;
   }
 
   @media (min-width: 960px) and (max-width: 1263px) {
-    min-height: 720px;
+    min-height: 70vh;
   }
 
   @media (min-width: 1264px) and (max-width: 1903px) {
-    min-height: 1100px;
+    min-height: 90vh;
   }
 
   @media (min-width: 1904px) {
