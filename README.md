@@ -1,43 +1,33 @@
-# [grupotesseract.com.br](https://grupotesseract.appspot.com/)
+<p align="center">
+  <img src="https://avatars0.githubusercontent.com/u/21321212?s=200&v=4" />
+</p>
 
-> Institutional site of Grupo Tesseract
+<h1 align="center">Grupo Tesseract</h1>
+
+<p align="center">Institutional site of Grupo Tesseract</p>
 
 ## Documentation
 
-[kb.grupotesseract.com.br/grupo-tesseract-institutional-site/](https://kb.grupotesseract.com.br/grupo-tesseract-institutional-site/)
+[kb.grupotesseract.com.br/grupo-tesseract-institutional-site](https://kb.grupotesseract.com.br/grupo-tesseract-institutional-site)
 
-## Installation
+## Requisites
 
-Install **Yarn**: [yarnpkg.com/lang/pt-BR/docs/install/#debian-stable](https://yarnpkg.com/lang/pt-BR/docs/install/#debian-stable)
+- [Yarn](https://yarnpkg.com/getting-started/install)
 
-### Develop Setup
+## Install
 
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn run dev
+``` sh
+yarn
+yarn start
 ```
 
 Access: [http://localhost:3000](http://localhost:3000)
 
 ## Tools
 
-- [Vue](https://vuejs.org/)
-- [Vuetify](https://vuetifyjs.com/en/)
-- [Nuxt](https://nuxtjs.org/)
-- [Material Design](https://material.io/)
-- [Node](https://nodejs.org/en/)
-- [Google Cloud](https://cloud.google.com/)
-
-### Features
-
-- Powerful Routing System with Asynchronous Data
-- Bundling and minifying of your JS & CSS
-- Pre-processor: Sass, Less, Stylus, etc
-- Deploy on Google Cloud
-- Device Width Breakpoints: 360px, 600px, 960px, 1264px, 1904px +
-- [Server Side Rendering](https://ssr.vuejs.org/#what-is-server-side-rendering-ssr)
-- ESLint and Prettier
-- Progressive Web App
+- [Vue](https://vuejs.org)
+- [Vuetify](https://vuetifyjs.com/en)
+- [Nuxt](https://nuxtjs.org)
+- [Material Design](https://material.io)
+- [Node](https://nodejs.org/en)
+- [Google Cloud](https://cloud.google.com)
