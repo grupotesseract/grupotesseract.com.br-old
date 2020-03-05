@@ -24,13 +24,6 @@
         <a target="blank" href="https://wa.me/5514981225509">
           <fa :icon="fab.faWhatsapp" class="fa-2x" />
         </a>
-        <a
-          class="mailto_link"
-          target="blank"
-          href="mailto:contato@grupotesseract.com.br"
-        >
-          <span>contato@grupotesseract.com.br</span>
-        </a>
       </v-flex>
     </v-flex>
   </v-layout>
